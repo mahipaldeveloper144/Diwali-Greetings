@@ -362,6 +362,33 @@
   }
 }
 
+/* Image Animations */
+.diwali-image {
+  animation: imageGlow 3s ease-in-out infinite;
+}
+
+@keyframes imageGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+  }
+}
+
+.side-image {
+  animation: sideImageFloat 4s ease-in-out infinite;
+}
+
+@keyframes sideImageFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
 /* Firework Burst Animation */
 .firework-burst {
   position: absolute;

@@ -470,21 +470,85 @@ function App() {
     audio.addEventListener('pause', () => console.log('🎵 Audio: Paused'));
     audio.addEventListener('ended', () => console.log('🎵 Audio: Ended'));
 
-    // Auto-play music if sound is enabled
-    if (soundEnabled) {
-      const playMusic = async () => {
+    // Create user interaction handlers for immediate music playback
+    const enableAudio = async () => {
+      if (audioElementRef.current && soundEnabled) {
         try {
-          console.log('🎵 Attempting to play audio...');
-          await audio.play();
-          console.log('🎵 Audio started successfully');
+          console.log('🎵 Attempting immediate audio playback...');
+          await audioElementRef.current.play();
+          console.log('🎵 Audio started immediately');
         } catch (error) {
-          console.log('🎵 Auto-play prevented by browser. User interaction required.', error);
+          console.log('🎵 Immediate play failed:', error);
         }
-      };
+      }
+    };
+
+    // Add multiple user interaction listeners to trigger audio
+    const interactionEvents = ['click', 'touchstart', 'keydown', 'mousemove'];
+    
+    const handleUserInteraction = () => {
+      enableAudio();
+      // Remove listeners after first successful interaction
+      interactionEvents.forEach(event => {
+        document.removeEventListener(event, handleUserInteraction);
+      });
+    };
+
+    // Add listeners for user interaction
+    interactionEvents.forEach(event => {
+      document.addEventListener(event, handleUserInteraction, { once: true });
+    });
+
+    // Try immediate play first
+    enableAudio();
+
+    // Additional triggers for immediate playback
+    const triggerImmediateAudio = () => {
+      if (audioElementRef.current && soundEnabled) {
+        audioElementRef.current.play().catch(e => console.log('🎵 Immediate trigger failed:', e));
+      }
+    };
+
+    // Try multiple approaches for immediate playback
+    window.addEventListener('load', triggerImmediateAudio);
+    document.addEventListener('DOMContentLoaded', triggerImmediateAudio);
+    window.addEventListener('focus', triggerImmediateAudio);
+    
+    // Try again after a short delay
+    setTimeout(triggerImmediateAudio, 500);
+    setTimeout(triggerImmediateAudio, 1000);
+    setTimeout(triggerImmediateAudio, 2000);
+
+    // Create synthetic user interaction
+    const createSyntheticInteraction = () => {
+      // Create a synthetic click event
+      const syntheticEvent = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      });
       
-      // Try to play after a short delay to ensure audio is loaded
-      setTimeout(playMusic, 1000);
-    }
+      // Dispatch the event on the document
+      document.dispatchEvent(syntheticEvent);
+      
+      // Also try touch event for mobile
+      const touchEvent = new TouchEvent('touchstart', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      });
+      
+      try {
+        document.dispatchEvent(touchEvent);
+      } catch (e) {
+        console.log('🎵 Touch event not supported');
+      }
+    };
+
+    // Try synthetic interaction after delays
+    setTimeout(createSyntheticInteraction, 300);
+    setTimeout(createSyntheticInteraction, 800);
+    setTimeout(createSyntheticInteraction, 1500);
 
     // Create particles
     const newParticles = [];
@@ -976,6 +1040,32 @@ function App() {
       {/* Flower Rain */}
       <FlowerRain show={showFlowerRain} />
 
+      {/* Hidden Audio Trigger */}
+      <button
+        ref={(el) => {
+          if (el && soundEnabled && audioElementRef.current) {
+            // Auto-click the hidden button to trigger audio
+            setTimeout(() => {
+              el.click();
+            }, 100);
+          }
+        }}
+        onClick={async () => {
+          if (audioElementRef.current && soundEnabled) {
+            try {
+              await audioElementRef.current.play();
+              console.log('🎵 Audio triggered by hidden button');
+            } catch (error) {
+              console.log('🎵 Hidden button play failed:', error);
+            }
+          }
+        }}
+        style={{ display: 'none' }}
+        aria-hidden="true"
+      >
+        Hidden Audio Trigger
+      </button>
+
       {/* Sound Toggle */}
       <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
         <button
@@ -1039,6 +1129,31 @@ function App() {
         </button>
       </div>
 
+      {/* Side Images */}
+      <div className="absolute top-20 left-4 z-20 hidden md:block">
+        <motion.img
+          src="/image/sideimage-Photoroom.png"
+          alt="Diwali Decoration"
+          className="w-16 h-16 object-contain side-image"
+          initial={{ opacity: 0, x: -50, rotate: -10 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+          whileHover={{ scale: 1.1, rotate: 5 }}
+        />
+      </div>
+
+      <div className="absolute top-20 right-4 z-20 hidden md:block">
+        <motion.img
+          src="/image/sideimage-Photoroom.png"
+          alt="Diwali Decoration"
+          className="w-16 h-16 object-contain side-image"
+          initial={{ opacity: 0, x: 50, rotate: 10 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+          whileHover={{ scale: 1.1, rotate: -5 }}
+        />
+      </div>
+
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4 pt-24">
         <motion.div
@@ -1053,6 +1168,20 @@ function App() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
+              {/* Main Image */}
+              <motion.div
+                className="flex justify-center mb-6"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <img
+                  src="/image/Download from pngedits.com - 4163.png"
+                  alt="Diwali Celebration"
+                  className="w-24 h-24 md:w-32 md:h-32 object-contain diwali-image"
+                />
+              </motion.div>
+
               {/* Header */}
               <motion.h1 
                 className="text-2xl md:text-3xl font-great-vibes text-white mb-4 text-glow leading-tight"
@@ -1160,6 +1289,20 @@ function App() {
                 transition={{ delay: 0.5 }}
                 className="mb-8"
               >
+                {/* Main Image for Personalized Message */}
+                <motion.div
+                  className="flex justify-center mb-6"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                >
+                  <img
+                    src="/image/Download from pngedits.com - 4163.png"
+                    alt="Diwali Celebration"
+                    className="w-20 h-20 md:w-24 md:h-24 object-contain diwali-image"
+                  />
+                </motion.div>
+
                 <h2 className="text-xl md:text-2xl font-great-vibes text-white mb-6 text-glow leading-tight">
                   🎉 Happy Diwali! 🎉
                 </h2>
