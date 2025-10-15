@@ -1,0 +1,501 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Diwali Animations */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl;
+  }
+  
+  /* Glowing Button */
+  .glow-button {
+    @apply bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  
+  .glow-button:hover {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+  
+  /* Diya Animation */
+  .diya {
+    @apply w-8 h-8 bg-gradient-to-b from-yellow-200 to-orange-400 rounded-full;
+    animation: flicker 0.15s infinite linear;
+  }
+  
+  /* Firecracker Animation */
+  .firecracker {
+    @apply w-4 h-10 bg-gradient-to-b from-red-600 via-red-500 to-red-700 rounded-sm shadow-lg;
+    animation: firecrackerBurst 1.5s ease-out;
+  }
+  
+  /* Rocket Animation */
+  .rocket {
+    @apply w-5 h-16 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-700 rounded-full shadow-lg;
+    animation: rocketLaunch 2s ease-out;
+  }
+  
+  /* Chakri Animation */
+  .chakri {
+    @apply w-10 h-10 border-4 border-yellow-400 rounded-full shadow-lg;
+    animation: chakriSpin 2s ease-out;
+  }
+  
+  /* Anar Animation */
+  .anar {
+    @apply w-8 h-8 bg-gradient-to-b from-green-500 via-green-600 to-green-700 rounded-full shadow-lg;
+    animation: anarFountain 1.8s ease-out;
+  }
+  
+  /* Lantern Animation */
+  .lantern {
+    @apply w-8 h-12 bg-gradient-to-b from-red-500 via-red-600 to-orange-600 rounded-lg shadow-lg;
+    animation: lanternGlow 2s ease-in-out infinite alternate;
+  }
+  
+  /* Firework Particle */
+  .firework-particle {
+    @apply absolute w-2 h-2 rounded-full;
+    animation: firework 0.6s ease-out forwards;
+  }
+  
+  /* Sparkle Effect */
+  .sparkle {
+    @apply absolute w-1 h-1 bg-yellow-300 rounded-full;
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+  
+  /* Typewriter Effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 3px solid #ffd700;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #ffd700; }
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Glow Effect */
+  .glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  /* Fade In Animation */
+  .fade-in {
+    animation: fadeIn 1s ease-in;
+  }
+  
+  /* Slide Up Animation */
+  .slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Custom Gradient Backgrounds */
+  .bg-diwali-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+  }
+  
+  .bg-diwali-gradient-2 {
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Text Glow */
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+  }
+  
+  /* Perfect Text Alignment */
+  .text-perfect {
+    text-align: center;
+    line-height: 1.6;
+    word-spacing: 0.1em;
+    letter-spacing: 0.02em;
+  }
+  
+  /* Attractive Message Styling */
+  .message-container {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .message-text {
+    color: #ffffff;
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+  }
+  
+  .message-glow {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 0 30px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Toran Animation */
+  .toran {
+    animation: toranSway 3s ease-in-out infinite;
+  }
+  
+  @keyframes toranSway {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-2px) rotate(0.5deg); }
+    50% { transform: translateY(0px) rotate(0deg); }
+    75% { transform: translateY(-1px) rotate(-0.5deg); }
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ffd700, #ff6b6b);
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ffed4e, #ff5252);
+  }
+}
+
+/* Particle System */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffd700, #ff6b6b);
+  border-radius: 50%;
+  animation: particleFloat 8s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced message animations */
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg);
+  }
+}
+
+@keyframes messageGlow {
+  0%, 100% {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 10px rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 15px rgba(255, 255, 255, 0.5),
+      0 0 25px rgba(255, 255, 255, 0.3),
+      0 0 35px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes messageFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Confetti Animation */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Sound Toggle Animation */
+.sound-toggle {
+  transition: all 0.3s ease;
+}
+
+.sound-toggle:hover {
+  transform: scale(1.1);
+}
+
+.sound-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Flower Rain Animation */
+.flower-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 30;
+  overflow: hidden;
+}
+
+.flower-item {
+  position: absolute;
+  font-size: 20px;
+  animation: flowerFall 4s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes flowerFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Flower Rain Effects */
+.flower-glow {
+  filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.6));
+}
+
+.flower-spin {
+  animation: flowerSpin 2s linear infinite;
+}
+
+@keyframes flowerSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Firework Burst Animation */
+.firework-burst {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 50%;
+  animation: fireworkBurst 1s ease-out forwards;
+}
+
+@keyframes fireworkBurst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Firecracker Animation */
+@keyframes firecrackerBurst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1) rotate(5deg);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.2) rotate(-5deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+/* Rocket Animation */
+@keyframes rocketLaunch {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(20vh) rotate(5deg) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(-5deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Chakri Animation */
+@keyframes chakriSpin {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(1) rotate(270deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Anar Animation */
+@keyframes anarFountain {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Lantern Animation */
+@keyframes lanternGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    opacity: 0.8;
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass-card {
+    @apply mx-4 p-6;
+  }
+  
+  .glow-button {
+    @apply py-2 px-4 text-sm;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    @apply mx-2 p-4;
+  }
+  
+  .glow-button {
+    @apply py-2 px-3 text-xs;
+  }
+}
