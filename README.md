@@ -202,6 +202,21 @@ This website captures the essence of Diwali with:
 - Warm, welcoming messages
 - Joyful user experience
 
+## 🚀 **Deployment**
+
+### **Netlify Deployment:**
+- The `public/_redirects` file is included for proper SPA routing
+- All routes redirect to `index.html` to let React handle routing
+- Query parameters are preserved for personalized greetings
+- Static assets are served directly for optimal performance
+
+### **Deployment Features:**
+- **SPA Routing**: Proper handling of client-side routing
+- **Query Parameters**: Support for `?name=` and `?lang=` parameters
+- **Static Assets**: Direct serving of images, music, and CSS files
+- **Security Headers**: Basic security headers included
+- **Performance**: Optimized for fast loading
+
 ## 📄 License
 
 This project is open source and available under the MIT License.

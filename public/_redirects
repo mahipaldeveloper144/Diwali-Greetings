@@ -1,0 +1,31 @@
+# Diwali Greetings Website Redirects
+# This file handles routing for the single-page React application
+
+# SPA (Single Page Application) redirect
+# All routes should redirect to index.html to let React Router handle them
+/*    /index.html   200
+
+# Specific redirects for common paths
+/    /index.html   200
+/index.html    /index.html   200
+
+# Handle query parameters properly
+# These ensure that URLs with query parameters work correctly
+/?*    /index.html   200
+
+# API redirects (if needed in future)
+/api/*    /api/    200
+
+# Static assets should be served directly
+/static/*    /static/    200
+/css/*    /css/    200
+/js/*    /js/    200
+/image/*    /image/    200
+/music/*    /music/    200
+
+# Security headers (optional)
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  200
